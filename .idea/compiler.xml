@@ -8,11 +8,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="springboot-jdbi-ex" />
+        <module name="springboot-jdbi" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="springboot-jdbi" options="-parameters" />
       <module name="springboot-jdbi-ex" options="-parameters" />
     </option>
   </component>
