@@ -23,6 +23,7 @@ public interface PacienteRepository {
     @GetGeneratedKeys
     List<Long> bulkInsert(@BindBean List<Paciente> pacientes);
 
+
     @SqlQuery
     Paciente findById(Long id);
 

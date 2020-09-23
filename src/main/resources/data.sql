@@ -1,0 +1,1 @@
+INSERT INTO pacientes(id, name) VALUES (1, 'Gilvan');
