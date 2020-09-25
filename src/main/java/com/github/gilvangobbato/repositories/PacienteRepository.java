@@ -12,19 +12,22 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-@UseClasspathSqlLocator
 public interface PacienteRepository {
 
-    @SqlUpdate
+    @SqlUpdate("INSERT INTO pacientes (id, nome, documento, last_update)"
+            + "VALUES (:id, :nome, :documento, :lastUpdate)")
     @GetGeneratedKeys
     Long insert(@BindBean Paciente paciente);
+
+    @SqlUpdate("UPDATE pacientes SET nome = :nome, documento = :documento "
+            + "WHERE id = :id AND last_update = :lastUpdate ")
+    Long update(@BindBean Paciente paciente);
 
     @SqlBatch("insert")
     @GetGeneratedKeys
     List<Long> bulkInsert(@BindBean List<Paciente> pacientes);
 
-
     @SqlQuery
+    @UseClasspathSqlLocator
     Paciente findById(Long id);
-
 }

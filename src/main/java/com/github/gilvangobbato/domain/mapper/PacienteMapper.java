@@ -13,6 +13,7 @@ public class PacienteMapper implements RowMapper<Paciente> {
     public Paciente map(ResultSet rs, StatementContext ctx) throws SQLException {
         return new Paciente(rs.getLong("id"),
                 rs.getString("nome"),
-                rs.getString("documento"));
+                rs.getString("documento"),
+                rs.getDate("last_update").toInstant());
     }
 }
