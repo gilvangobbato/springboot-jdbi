@@ -14,6 +14,6 @@ public class PacienteMapper implements RowMapper<Paciente> {
         return new Paciente(rs.getLong("id"),
                 rs.getString("nome"),
                 rs.getString("documento"),
-                rs.getDate("last_update").toInstant());
+                rs.getTimestamp("last_update").toInstant());
     }
 }

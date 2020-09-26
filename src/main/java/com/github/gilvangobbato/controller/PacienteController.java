@@ -5,11 +5,10 @@ import com.github.gilvangobbato.services.PacienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/paciente")
@@ -33,5 +32,17 @@ public class PacienteController {
                         () -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Erro ao inserir paciente.")
                 );
         return ResponseEntity.ok(retorno);
+    }
+
+    @GetMapping(path = "/{id}")
+    public ResponseEntity<Paciente> findById(@PathVariable("id") Long id){
+        Paciente bean = pacienteService.findyId(id);
+        return ResponseEntity.ok(bean);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Paciente>> findAll(){
+        List<Paciente> lista = pacienteService.findAll();
+        return ResponseEntity.ok(lista);
     }
 }
