@@ -1,1 +1,0 @@
-INSERT INTO pacientes(id, nome, documento, last_update) VALUES (1, 'Gilvan', '02458874565', now());
